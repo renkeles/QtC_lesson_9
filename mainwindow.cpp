@@ -43,16 +43,30 @@ MainWindow::MainWindow(QWidget *parent)
             connect(addbutton, SIGNAL(sendInfo(QString,QString,QString)), this, SLOT(takeInfo(QString,QString,QString)));
         }
     }
+
+    QList<QStringList> backup = reader.Read();
+    if(!backup.isEmpty())
+    {
+        for(auto i : backup)
+        {
+            sModel->appendRow(QList<QStandardItem*>{new QStandardItem{i.at(0)}, new QStandardItem{i.at(1)}, new QStandardItem{i.at(2)}});
+        }
+    }
+
 }
 
 MainWindow::~MainWindow()
 {
+    for(auto i : infoList)
+    {
+       reader.Write(QStringList{i.deadline, i.textTask, i.progress});
+    }
     delete ui;
 }
 
 void MainWindow::takeInfo(QString deadline, QString text, QString progress)
 {
-    qList.append(infoTask{deadline, text, progress});
+    infoList.append(infoTask{deadline, text, progress});
     sModel->appendRow(QList<QStandardItem*>{new QStandardItem{deadline}, new QStandardItem{text}, new QStandardItem{progress}});
 }
 

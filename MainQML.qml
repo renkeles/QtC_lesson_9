@@ -83,7 +83,7 @@ Rectangle
                 verticalAlignment: TextInput.AlignVCenter
                 horizontalAlignment: TextInput.AlignHCenter
                 inputMethodHints: Qt.ImhDate
-                inputMask: "99.99.9999"
+                inputMask: "00.00.0000"
                 text: new Date().toLocaleDateString("dd.MM.yyyy")
             }
         }
@@ -155,6 +155,15 @@ Rectangle
             anchors.top: rectProgressBox.bottom;
         }
 
+        Rectangle
+        {
+            anchors.top: line4.bottom
+            Loader
+            {
+                source: "button.qml"
+            }
+        }
+/*
         Button
         {
             signal sendInfo(string deadlne, string taskText, string progress)
@@ -177,5 +186,7 @@ Rectangle
             }
 
         }
+*/
     }
 }
+

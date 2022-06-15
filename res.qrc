@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/qmls">
         <file>MainQML.qml</file>
+        <file>button.qml</file>
     </qresource>
+    <qresource prefix="/bin"/>
 </RCC>

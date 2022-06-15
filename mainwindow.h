@@ -5,6 +5,8 @@
 #include <QtQuickWidgets>
 #include <QStandardItemModel>
 #include <QTableView>
+#include <QFile>
+#include "basereader.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -34,9 +36,14 @@ private:
         QString progress;
     };
 
-    QList<infoTask> qList;
+    QList<infoTask> infoList;
+
+    BaseReader reader;
 
     int minWidth = 640;
     int minHeight = 480;
+
+
+
 };
 #endif // MAINWINDOW_H
